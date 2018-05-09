@@ -33,23 +33,22 @@ class App extends Component {
   addTodo(e) {
     e.preventDefault();
     if(this.state.newTodo !== "") {
-      let newList = this.state.todos;
-      newList.push({
-        id: v4(),
+      const newObj = Object.assign({},this.state.todos);
+      newObj[v4()] = {
         title: this.state.newTodo,
         done: false
-      });
+      }
       this.setState({
-        todos: newList,
+        todos: newObj,
         newTodo: ""
       })
     }
   }
   deleteTodo(id) {
-    console.log(id);
-    delete this.state.todos[id];
+    const newObj = Object.assign({}, this.state.todos);
+    delete newObj[id];
     this.setState({
-      todos: this.state.todos
+      todos: newObj
     });
   }
   editTodo(id) {
@@ -84,9 +83,10 @@ class App extends Component {
     });
   }
   checkboxClick(id) {
-    this.state.todos[id].done = !this.state.todos[id].done;
+    const newObj = Object.assign({}, this.state.todos);
+    newObj[id].done = !this.state.todos[id].done
     this.setState({
-      todos: this.state.todos
+      todos: newObj
     });
   }
   render() {
