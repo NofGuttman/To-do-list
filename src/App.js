@@ -46,10 +46,11 @@ class App extends Component {
     }
   }
   deleteTodo(id) {
-    let newList = this.state.todos.filter((item) => item.id !== id);
+    console.log(id);
+    delete this.state.todos[id];
     this.setState({
-      todos: newList
-    })
+      todos: this.state.todos
+    });
   }
   editTodo(id) {
     let selected = this.state.todos.find((item) => item.id === id);
@@ -95,6 +96,7 @@ class App extends Component {
     })
   }
   render() {
+    console.log(this.state.todos)
     return (
       <div>
         <AddTodo
@@ -103,12 +105,12 @@ class App extends Component {
           newTodo={this.state.newTodo}
         />
         <ul className="todo-list">
-          {this.state.todos.map((item) => (
+          {Object.keys(this.state.todos).map((key) => (
             <TodoItem 
-              key={item.id}
-              id={item.id}
-              done={item.done}
-              title={item.title}
+              key={key}
+              id={key}
+              done={this.state.todos[key].done}
+              title={this.state.todos[key].title}
               deleteHandler={this.deleteTodo}
               editHandler={this.editTodo}
               checkboxHandler={this.checkboxClick}
