@@ -52,26 +52,21 @@ class App extends Component {
     });
   }
   editTodo(id) {
-    let selected = this.state.todos.find((item) => item.id === id);
+    let selectedTitle = this.state.todos[id].title
     this.setState({
       edit: {
               status: true,
-              title: selected.title,
+              title: selectedTitle,
               id: id
             }
     });
   }
   doneEdit(e) {
     e.preventDefault();
-    let newList = this.state.todos;
-    for(let i in newList) {
-      if(newList[i].id === this.state.edit.id) {
-        newList[i].title = this.state.edit.title
-        break;
-      }
-    }
+    const newObj = Object.assign({}, this.state.todos);
+    newObj[this.state.edit.id].title = this.state.edit.title;
     this.setState({
-      todos: newList,
+      todos: newObj,
       edit: {
         status: false
       }
