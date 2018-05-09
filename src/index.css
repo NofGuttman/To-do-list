@@ -1,0 +1,56 @@
+body {
+  text-align: center;
+  font-family: sans-serif; }
+
+.todo-list {
+  width: 40vw;
+  margin: 0 auto; }
+  .todo-list .list-item {
+    list-style: none;
+    text-align: left;
+    padding: 0.5em;
+    margin: .5em;
+    border-radius: 5px;
+    background-color: #d5d5d5;
+    box-shadow: 0 7px 10px -5px grey;
+    transition: 400ms ease; }
+    .todo-list .list-item.done {
+      background-color: limegreen;
+      color: darkgreen; }
+    .todo-list .list-item .actions-section {
+      float: right; }
+      .todo-list .list-item .actions-section .delete-button {
+        color: red;
+        font-weight: bold;
+        font-size: 2em;
+        transform: translateY(-0.2em);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: 100ms ease; }
+        .todo-list .list-item .actions-section .delete-button:hover {
+          transform: scale(1.1) translateY(-0.2em); }
+      .todo-list .list-item .actions-section .edit-button {
+        font-size: 1.6em;
+        transform: translateY(-0.4em);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: 100ms ease; }
+        .todo-list .list-item .actions-section .edit-button:hover {
+          transform: scale(1.1) translateY(-0.4em); }
+
+.edit-modal {
+  position: fixed;
+  background: orangered;
+  padding: 1em;
+  border: black 2px solid;
+  border-radius: 5px;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%); }
+  .edit-modal input {
+    display: block;
+    width: 20em; }
+
+/*# sourceMappingURL=index.css.map */
