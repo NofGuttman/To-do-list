@@ -84,19 +84,12 @@ class App extends Component {
     });
   }
   checkboxClick(id) {
-    console.log(id);
-    let newList = this.state.todos;
-    newList.forEach((item) => {
-      if(item.id === id) {
-        item.done = !item.done
-      }
-    })
+    this.state.todos[id].done = !this.state.todos[id].done;
     this.setState({
-      todos: newList
-    })
+      todos: this.state.todos
+    });
   }
   render() {
-    console.log(this.state.todos)
     return (
       <div>
         <AddTodo
